@@ -7,8 +7,11 @@ Y=[]
 #load data
 for line in open('data_1d.csv'):
     x,y=line.split(',')
-    X.append(float(x))
-    Y.append(float(y))
+    try:
+        X.append(float(x))
+        Y.append(float(y))
+    except ValueError:
+        print(line)
 
 #convert lists to numpy array
 X=np.array(X)
@@ -35,3 +38,9 @@ plt.scatter(X,Y)
 plt.plot(X,Yhat)
 plt.title('1D Linear Regression')
 plt.show()
+
+#Assesing the model's accuracy using R^2
+SSres=np.dot(Y-Yhat,Y-Yhat)
+SStot=np.dot(Y-Y.mean(),Y-Y.mean())
+R2=1-SSres/SStot
+print(R2)
