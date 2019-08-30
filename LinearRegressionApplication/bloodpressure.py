@@ -25,9 +25,11 @@ plt.show()
 #Add bias
 
 df['ones']=1
+#Uncomment the next line to test the effect of adding noise to data
+#df['noise']=np.random.randn(11)
 #labels
 Y=df['X1']
-#independent variables(preparing for 3 seperate linear regressions)
+#independent variables(preparing for 3 seperate linear regressions) ////Add 'noise' to X to include it in data assesment
 X=df[['X2','X3','ones']]
 
 age=df[['X2','ones']]
